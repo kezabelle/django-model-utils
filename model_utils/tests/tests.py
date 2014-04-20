@@ -1491,6 +1491,10 @@ class FieldTrackerTests(FieldTrackerTestCase, FieldTrackerCommonTests):
         item.number = 2
         self.assertTrue(item.tracker.has_changed('number'))
 
+    def test_pickling(self):
+        serialized = pickle.dumps(self.instance)
+        deserialized = pickle.loads(serialized)
+
 
 class FieldTrackedModelCustomTests(FieldTrackerTestCase,
                                    FieldTrackerCommonTests):
